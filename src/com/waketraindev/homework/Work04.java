@@ -20,7 +20,7 @@ public class Work04 {
 
         final int maxHeartRate = 220 - age;
         final double bmi = (weight / height / height * 10_000);
-        System.out.printf("BMI: %.2f, Max Heart Rate: %d", bmi, maxHeartRate);
+        System.out.printf("BMI: %.2f, Max Heart Rate: %d %n", bmi, maxHeartRate);
 
     }
 }
