@@ -1,5 +1,7 @@
 package session_1_java_basics;
 
+import session_10_OOP_concepts.Person;
+
 public class Main {
     public static void main(String[] args) {
         // Variable declaration and initialization
@@ -43,5 +45,7 @@ public class Main {
 
         // Arithmetic with double
         System.out.println("Half of the weight: " + weight / 2);  // Divide weight by 2 and print
+
+        Person p = new Person();
     }
 }

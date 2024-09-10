@@ -2,43 +2,47 @@ package session_10_OOP_concepts;
 
 import java.time.LocalDateTime;
 
-public class Alarm {
+public sealed class Alarm permits HighVisibilityAlarm, PrioritizeAlarm{
     private boolean active;
-    final String message;
+    private final String message;
     private LocalDateTime snoozeUntil;
 
 //    Alarm(){
 //        message="adfhgad";
 //    }
 
-    Alarm(String message) {
+    public Alarm(String message) {
         this.message = message;
         stopSnoozing();
 //        this(message,false);
     }
 
-    void setSnoozeUntil(LocalDateTime snoozeUntil) {
+    public void setSnoozeUntil(LocalDateTime snoozeUntil) {
         this.snoozeUntil = snoozeUntil;
     }
 
-    LocalDateTime getSnoozeUntil(){
+    public LocalDateTime getSnoozeUntil() {
         return snoozeUntil;
     }
 
-    boolean isActive() {
+    public boolean isActive() {
         return active;
     }
 
-    void snooze() {
+    public String getMessage() {
+        return message;
+    }
+
+    public void snooze() {
         if (active)
             snoozeUntil = LocalDateTime.now().plusSeconds(5);
     }
 
-    boolean isSnoozing() {
+    public boolean isSnoozing() {
         return snoozeUntil.isAfter(LocalDateTime.now());
     }
 
-    void stopSnoozing() {
+    public void stopSnoozing() {
         snoozeUntil = LocalDateTime.now().minusSeconds(1);
     }
 
@@ -47,20 +51,20 @@ public class Alarm {
 //        this.active = active;
 //    }
 
-    void turnOn() {
+    public void turnOn() {
         active = true;
     }
 
-    void turnOff() {
+    public final void turnOff() {
         active = false;
         stopSnoozing();
     }
 
-    String getReport() {
+    public String getReport() {
         return getReport(false);
     }
 
-    String getReport(boolean toUppercase) {
+    public String getReport(boolean toUppercase) {
         if (active && !isSnoozing()) {
             if (toUppercase)
                 return message.toUpperCase();
@@ -70,7 +74,7 @@ public class Alarm {
             return "";
     }
 
-    void sendReport() {
+    public void sendReport() {
         System.out.println(getReport(true));
     }
 }
