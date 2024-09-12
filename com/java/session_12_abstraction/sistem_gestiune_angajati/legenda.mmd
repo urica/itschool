@@ -1,0 +1,10 @@
+classDiagram
+class ExempluInterfață {
+<<interface>>
+}
+class ExempluClasăAbstractă {
+<<abstract>>
+}
+class ExempluClasăConcretă
+ExempluClasăConcretă --|> ExempluClasăAbstractă : Mostenire! Săgeată cu linie continuă și vârf gol
+ExempluClasăConcretă ..|> ExempluInterfață : Implementare Interfata! Săgeată cu linie întreruptă și vârf gol

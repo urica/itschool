@@ -1,0 +1,60 @@
+classDiagram
+    class Employee {
+        <<abstract>>
+        #String name
+        #int id
+        #double salary
+        +Employee(name: String, id: int, salary: double)
+        +displayInfo()
+        +work()*
+    }
+
+    class TechnicalEmployee {
+        <<abstract>>
+        +TechnicalEmployee(name: String, id: int, salary: double)
+        +debugCode()
+        +learnNewTechnology()*
+    }
+
+    class SoftwareDeveloper {
+        +SoftwareDeveloper(name: String, id: int, salary: double)
+        +work()
+        +writeCode()
+        +learnNewTechnology()
+    }
+
+    class ProjectManager {
+        +ProjectManager(name: String, id: int, salary: double)
+        +work()
+        +leadTeam()
+        +conductMeetings()
+    }
+
+    class TechnicalLead {
+        +TechnicalLead(name: String, id: int, salary: double)
+        +work()
+        +writeCode()
+        +leadTeam()
+        +conductMeetings()
+        +learnNewTechnology()
+    }
+
+    class ProgrammingSkills {
+        <<interface>>
+        +writeCode()
+        +debugCode()
+    }
+
+    class ManagementSkills {
+        <<interface>>
+        +leadTeam()
+        +conductMeetings()
+    }
+
+    Employee <|-- TechnicalEmployee
+    Employee <|-- ProjectManager
+    TechnicalEmployee <|-- SoftwareDeveloper
+    TechnicalEmployee <|-- TechnicalLead
+    ProgrammingSkills <|.. TechnicalEmployee
+    ManagementSkills <|.. ProjectManager
+    ManagementSkills <|.. TechnicalLead
