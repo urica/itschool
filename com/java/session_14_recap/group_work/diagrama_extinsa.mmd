@@ -1,0 +1,69 @@
+classDiagram
+    class Item {
+        <<abstract>>
+        #String titlu
+        #int anPublicare
+        +getTitlu() String
+        +getAnPublicare() int
+        +getDetalii()* String
+    }
+
+    class Imprumutabil {
+        <<interface>>
+        +imprumuta(String numeCititor, LocalDate dataReturnare) void
+        +returneaza() void
+        +esteDisponibil() boolean
+        +getNumeCititor() String
+        +getDataReturnare() LocalDate
+    }
+
+    class Carte {
+        -String autor
+        -boolean disponibil
+        -String numeCititor
+        -LocalDate dataReturnare
+        +getAutor() String
+        +getDetalii() String
+    }
+
+    class Revista {
+        -int numarEditie
+        -boolean disponibil
+        -String numeCititor
+        -LocalDate dataReturnare
+        +getNumarEditie() int
+        +getDetalii() String
+    }
+
+    class Imprumut {
+        -Imprumutabil item
+        -String numeCititor
+        -LocalDate dataImprumut
+        -LocalDate dataReturnare
+        +getItem() Imprumutabil
+        +getNumeCititor() String
+        +getDataImprumut() LocalDate
+        +getDataReturnare() LocalDate
+        +toString() String
+    }
+
+    class Biblioteca {
+        -List~Item~ items
+        -List~Imprumut~ imprumuturi
+        +adaugaItem(Item) void
+        +eliminaItem(Item) void
+        +cautaDupaTitlu(String) Item
+        +cautaDupaAutor(String) List~Item~
+        +afiseazaToateElementele() void
+        +imprumutaItem(Item, String, LocalDate) void
+        +returneazaItem(Item) void
+        +afiseazaImprumuturi() void
+    }
+
+    Item <|-- Carte
+    Item <|-- Revista
+    Imprumutabil <|.. Carte
+    Imprumutabil <|.. Revista
+    Biblioteca o-- Item
+    Biblioteca o-- Imprumut
+    Imprumut --> Imprumutabil

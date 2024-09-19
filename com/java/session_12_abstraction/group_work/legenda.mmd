@@ -1,0 +1,41 @@
+classDiagram
+    class Legenda {
+        Explicații pentru relațiile din diagrama UML
+    }
+
+    class Moștenire {
+        Clasa derivată extinde clasa de bază
+    }
+
+    class ImplementareInterfață {
+        Clasa implementează interfața
+    }
+
+    class Asociere {
+        O clasă folosește o altă clasă
+    }
+
+    class Agregare {
+        O clasă conține referințe la alte clase
+    }
+
+    class Compoziție {
+        O clasă conține și este responsabilă
+        pentru ciclul de viață al altei clase
+    }
+
+    Moștenire --|> Legenda : Săgeată cu linie continuă și vârf gol
+    ImplementareInterfață ..|> Legenda : Săgeată cu linie întreruptă și vârf gol
+    Asociere --> Legenda : Săgeată cu linie continuă și vârf plin
+    Agregare o-- Legenda : Linie cu diamant gol la un capăt
+    Compoziție *-- Legenda : Linie cu diamant plin la un capăt
+
+    class ExempluInterfață {
+        <<interface>>
+    }
+    class ExempluClasăAbstractă {
+        <<abstract>>
+    }
+    class ExempluClasăConcretă
+    ExempluClasăConcretă --|> ExempluClasăAbstractă : Mostenire! Săgeată cu linie continuă și vârf gol
+    ExempluClasăConcretă ..|> ExempluInterfață : Implementare Interfata! Săgeată cu linie întreruptă și vârf gol
