@@ -1,0 +1,69 @@
+classDiagram
+    class ElementParc {
+        <<interface>>
+        +getNume() String
+        +getPret() double
+    }
+
+    class Mentenabil {
+        <<interface>>
+        +efectueazaMentenanta() void
+        +necesitaMentenanta() boolean
+    }
+
+    class Facilitate {
+        <<interface>>
+        +deschide() void
+        +inchide() void
+    }
+
+    class Atractie {
+        <<abstract>>
+        #nume: String
+        #pret: double
+        #nivelUzura: int
+        +Atractie(nume: String, pret: double)
+        +foloseste()* void
+    }
+
+    class Rollercoaster {
+        -inaltimeMaxima: int
+        +Rollercoaster(nume: String, pret: double, inaltimeMaxima: int)
+        +foloseste() void
+        +efectueazaMentenanta() void
+    }
+
+    class Carusel {
+        -numarLocuri: int
+        +Carusel(nume: String, pret: double, numarLocuri: int)
+        +foloseste() void
+        +efectueazaMentenanta() void
+    }
+
+    class Restaurant {
+        -nume: String
+        -pretMediuMasa: double
+        -deschis: boolean
+        +Restaurant(nume: String, pretMediuMasa: double)
+    }
+
+    class ParcDistractii {
+        -atractii: List~Atractie~
+        -facilitati: List~Facilitate~
+        +ParcDistractii()
+        +adaugaAtractie(atractie: Atractie) void
+        +adaugaFacilitate(facilitate: Facilitate) void
+        +deschideParc() void
+        +inchideParc() void
+        +efectueazaMentenantaGenerala() void
+        +simuleazaZi() void
+    }
+
+    ElementParc <|-- Facilitate
+    ElementParc <|.. Atractie
+    Mentenabil <|.. Atractie
+    Atractie <|-- Rollercoaster
+    Atractie <|-- Carusel
+    Facilitate <|.. Restaurant
+    ParcDistractii o-- Atractie
+    ParcDistractii o-- Facilitate

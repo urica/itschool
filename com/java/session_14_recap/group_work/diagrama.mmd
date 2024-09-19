@@ -1,0 +1,45 @@
+classDiagram
+    class Item {
+        <<abstract>>
+        #String titlu
+        #int anPublicare
+        +getTitlu() String
+        +getAnPublicare() int
+        +getDetalii()* String
+    }
+
+    class Imprumutabil {
+        <<interface>>
+        +imprumuta() void
+        +returneaza() void
+        +esteDisponibil() boolean
+    }
+
+    class Carte {
+        -String autor
+        -boolean disponibil
+        +getAutor() String
+        +getDetalii() String
+    }
+
+    class Revista {
+        -int numarEditie
+        -boolean disponibil
+        +getNumarEditie() int
+        +getDetalii() String
+    }
+
+    class Biblioteca {
+        -List~Item~ items
+        +adaugaItem(Item) void
+        +eliminaItem(Item) void
+        +cautaDupaTitlu(String) Item
+        +cautaDupaAutor(String) List~Item~
+        +afiseazaToateElementele() void
+    }
+
+    Item <|-- Carte
+    Item <|-- Revista
+    Imprumutabil <|.. Carte
+    Imprumutabil <|.. Revista
+    Biblioteca o-- Item
